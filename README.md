@@ -15,9 +15,11 @@ This repository contains the source code for Unreal Pizza, a mobile ordering app
 
 Here are some screenshots of the Unreal Pizza app:
 
-![Image 1](https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_1.png)
-![Image 2](https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_2.png)
-![Image 3](https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_3.png)
+<div style="display: flex;">
+  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_1.png" alt="Image 1" width="300">
+  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_2.png" alt="Image 2" width="300">
+  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_3.png" alt="Image 3" width="300">
+</div>
 
 ## Installation
 
