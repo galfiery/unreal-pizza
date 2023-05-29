@@ -50,4 +50,4 @@ We would like to express our gratitude to the creators of Angular and Ionic fram
 
 ## Contact
 
-For any inquiries or questions, please contact us at guglielmoalfieri@yahoo.com.
+For any inquiries or questions, please contact me at guglielmoalfieri@yahoo.com.
