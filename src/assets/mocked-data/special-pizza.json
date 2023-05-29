@@ -1,0 +1,122 @@
+[
+  {
+    "id": 12345,
+    "name": "bufala",
+    "description": "pomodoro, mozzarella di bufala, basilico",
+    "categoryType": "pizza",
+    "price": 4.20,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 67890,
+    "name": "regina",
+    "description": "pomodoro, mozzarella, prosciutto cotto, funghi",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 13579,
+    "name": "salmone e rucola",
+    "description": "pomodoro, mozzarella, salmone, rucola",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 24680,
+    "name": "bresaola e radicchio",
+    "description": "pomodoro, mozzarella, bresaola, radicchio",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 98765,
+    "name": "vegetariana",
+    "description": "pomodoro, mozzarella, verdure grigliate",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 54321,
+    "name": "porcini",
+    "description": "pomodoro, mozzarella, funghi porcini",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 98765,
+    "name": "tonno e cipolla",
+    "description": "pomodoro, mozzarella, tonno, cipolle",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 24680,
+    "name": "diavola",
+    "description": "pomodoro, mozzarella, salame piccante",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 12345,
+    "name": "scamorza e asparagi",
+    "description": "pomodoro, mozzarella, scamorza, asparagi",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 67890,
+    "name": "margherita con patatine",
+    "description": "pomodoro, mozzarella, patatine fritte",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 13579,
+    "name": "margherita con spianata calabra piccante",
+    "description": "pomodoro, mozzarella, spianata calabra",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 24680,
+    "name": "margherita con salsiccia fresca",
+    "description": "pomodoro, mozzarella, salsiccia fresca",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  }
+]

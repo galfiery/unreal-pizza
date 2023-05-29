@@ -1,0 +1,7 @@
+{
+  "name": "unreal-pizza",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

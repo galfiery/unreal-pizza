@@ -1,0 +1,122 @@
+[
+  {
+    "id": 12345,
+    "name": "marinara",
+    "description": "pomodoro, aglio, origano",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 67890,
+    "name": "margherita",
+    "description": "pomodoro, mozzarella, basilico",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 13579,
+    "name": "napoli",
+    "description": "pomodoro, mozzarella, acciughe, origano, capperi, olive nere",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 24680,
+    "name": "prosciutto",
+    "description": "pomodoro, mozzarella, prosciutto cotto",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 98765,
+    "name": "funghi",
+    "description": "pomodoro, mozzarella, funghi freschi",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 54321,
+    "name": "capricciosa",
+    "description": "pomodoro, mozzarella, funghi, olive nere, prosciutto cotto, carciofi, acciughe, capperi, origano",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 98765,
+    "name": "quattro formaggi",
+    "description": "mozzarella, scamorza, zola, grana",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": "with a free drink!"
+  },
+  {
+    "id": 24680,
+    "name": "crudo",
+    "description": "pomodoro, mozzarella, prosciutto crudo",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 12345,
+    "name": "speck",
+    "description": "pomodoro, mozzarella, speck",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 67890,
+    "name": "wurstel",
+    "description": "pomodoro, mozzarella, wurstel",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 13579,
+    "name": "calzone",
+    "description": "pomodoro, mozzarella, prosciutto cotto",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 24680,
+    "name": "quattro stagioni",
+    "description": "pomodoro, mozzarella, prosciutto cotto, olive nere, funghi, carciofi",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  }
+]

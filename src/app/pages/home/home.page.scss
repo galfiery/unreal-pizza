@@ -1,0 +1,77 @@
+ion-col {
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.item-grid {
+  background-color: #f1eeee;
+  width: auto;
+  height: 100px;
+  border-radius: 10px;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+.normal-pizza-item {
+  background-image: url('../../../assets/images/pizza_1.avif');
+  background-size: cover;
+  background-position: center;
+}
+
+.special-pizza-item {
+  background-image: url('../../../assets/images/pizza_2.avif');
+  background-size: cover;
+  background-position: center;
+}
+
+.pizza-week-item {
+  background-image: url('../../../assets/images/pizza_3.avif');
+  background-size: cover;
+  background-position: center;
+}
+
+.dessert-item {
+  background-image: url('../../../assets/images/dessert_1.avif');
+  background-size: cover;
+  background-position: center;
+}
+
+.drink-item {
+  background-image: url('../../../assets/images/beverage_1.avif');
+  background-size: cover;
+  background-position: center;
+}
+
+.item-label {
+  font-size: 20px;
+  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  padding-top: 100px;
+}
+
+.grid-container {
+  padding-top: 30px;
+}
+
+.search-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.item-badge {
+  position: absolute;
+  top: 11px;
+  right: 5px;
+  width: auto;
+  height: 20px;
+  background-color: red;
+  font-size: 12px;
+  padding: 3px;
+}

@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="container">
+
+    <div class="search-container">
+      <ion-item>
+        <ion-input placeholder="Pizza, dessert, drink ecc"></ion-input>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-item>
+    </div>
+
+    <div class="grid-container">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="item-grid normal-pizza-item" routerLink="/tabs/item-list/classic">
+              <label class="item-label">Classic</label>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="item-grid special-pizza-item" routerLink="/tabs/item-list/special">
+              <div class="item-badge">
+                Promotions!
+              </div>
+              <label class="item-label">Special</label>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="item-grid dessert-item" routerLink="/tabs/item-list/dessert">
+              <label class="item-label">Dessert</label>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="item-grid drink-item" routerLink="/tabs/item-list/drink">
+              <label class="item-label">Drink</label>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="item-grid pizza-week-item" routerLink="/tabs/item-list/week">
+              <label class="item-label">Pizzas of the week</label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+</ion-content>
