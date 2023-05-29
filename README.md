@@ -44,10 +44,6 @@ Contributions to Unreal Pizza mobile ordering app are welcome! If you find any b
 
 This project is licensed under the [Apache License 2.0](LICENSE).
 
-## Acknowledgments
-
-We would like to express our gratitude to the creators of Angular and Ionic frameworks for providing the tools to build this mobile ordering app. Additionally, we thank the Unreal Pizza team for their support and inspiration throughout the development process.
-
 ## Contact
 
 For any inquiries or questions, please contact me at guglielmoalfieri@yahoo.com.
