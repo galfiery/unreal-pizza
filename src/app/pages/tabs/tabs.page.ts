@@ -12,7 +12,7 @@ export class TabsPage {
 
   constructor(private cartService: CartService) {}
 
-  async ngOnInit() {
+  async ionVieWillEnter() {
     this.cartItems = await this.getCartItems();
 
     this.cartService.getCartObs()
