@@ -1,8 +1,28 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="container">
+    <h3 class="list-title"> Shopping Cart </h3>
 
+    <ion-item detail="true" *ngFor="let item of itemList; let idx = index;" [id]="'open-modal-' + idx" expand="block">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" [src]="'../../../assets/images/pizza_1.avif'" />
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap">
+        {{capitalizeFirstLetter(item.name)}}
+        <p> {{ item.currency }} {{item.price}} </p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button color="danger"> Remove </ion-button>
+      </ion-buttons>
+      <ion-modal [trigger]="'open-modal-' + idx" [initialBreakpoint]="1" [breakpoints]="[0, 1]" handleBehavior="cycle">
+        <ng-template>
+          <div class="ion-padding">
+            <div class="image-item"> <img [src]="'../../../assets/images/pizza_1.avif'" /></div>
+            <h3> {{capitalizeFirstLetter(item.name)}} </h3>
+            <p> {{capitalizeFirstLetter(item.description)}} </p>
+          </div>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+  </div>
 </ion-content>

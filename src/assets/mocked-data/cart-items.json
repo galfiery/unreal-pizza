@@ -1,0 +1,42 @@
+[
+  {
+    "id": 12345,
+    "name": "marinara",
+    "description": "pomodoro, aglio, origano",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 13579,
+    "name": "salmone e rucola",
+    "description": "pomodoro, mozzarella, salmone, rucola",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 24680,
+    "name": "bresaola e radicchio",
+    "description": "pomodoro, mozzarella, bresaola, radicchio",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  },
+  {
+    "id": 98765,
+    "name": "vegetariana",
+    "description": "pomodoro, mozzarella, verdure grigliate",
+    "categoryType": "pizza",
+    "price": 4.00,
+    "currency": "€",
+    "imageSrc": null,
+    "promotion": null
+  }
+]
