@@ -11,6 +11,14 @@ This repository contains the source code for Unreal Pizza, a mobile ordering app
   - **User Profile**: Users have a personal profile section where they can manage their account information, update preferences, and view order history.
   - **Order History**: Customers can access a history of their previous orders, allowing them to track their past purchases and reorder their favorite items.
 
+## Demo
+
+Here are some screenshots of the Unreal Pizza app:
+
+![Image 1](https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_1.png)
+![Image 2](https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_2.png)
+![Image 3](https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_3.png)
+
 ## Installation
 
 To run the Unreal Pizza mobile ordering app locally, follow these steps:
