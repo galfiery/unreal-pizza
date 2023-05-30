@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ItemInfoComponent } from 'src/app/components/item-info/item-info.component';
 import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
 import { ItemService } from 'src/app/services/item.service';
@@ -16,7 +18,9 @@ export class HomePage {
 
   constructor(
     private itemService: ItemService,
-    private baseService: BaseService) {}
+    private baseService: BaseService,
+    private modalController: ModalController,
+  ) {}
 
   async search(event: any) {
     if (event?.detail?.value) {
@@ -31,6 +35,22 @@ export class HomePage {
     } else {
       this.searching = false;
     }
+  }
+
+  async openInfo(item: any) {
+    const modal = await this.modalController.create({
+      component: ItemInfoComponent,
+      initialBreakpoint: 0.40,
+      breakpoints: [0, 0.25, 0.5, 0.75],
+      cssClass: 'half-page-modal',
+      showBackdrop: true,
+      backdropDismiss: true,
+      componentProps: {
+        item
+      }
+    });
+
+    await modal.present();
   }
 
   private async getAllItemsAvailables(): Promise<Item []> {
