@@ -46,7 +46,7 @@ ion-col {
   background-position: center;
 }
 
-.item-label {
+.item-label-grid {
   font-size: 20px;
   margin: 0 auto;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -74,4 +74,22 @@ ion-col {
   background-color: red;
   font-size: 12px;
   padding: 3px;
+}
+
+.block {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+.image-item {
+  width: 150px;
+  height: auto;
+  margin: 0 auto;
 }
