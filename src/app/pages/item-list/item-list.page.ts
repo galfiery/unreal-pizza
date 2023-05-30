@@ -20,7 +20,8 @@ export class ItemListPage implements OnInit {
   constructor(
     private itemService: ItemService,
     private route: ActivatedRoute,
-    private baseService: BaseService
+    private baseService: BaseService,
+    private modalController: ModalController,
   ) { }
 
   ngOnInit() {
@@ -53,6 +54,22 @@ export class ItemListPage implements OnInit {
           break;
       }
     });
+  }
+
+  async openInfo(item: any) {
+    const modal = await this.modalController.create({
+      component: ItemInfoComponent,
+      initialBreakpoint: 0.40,
+      breakpoints: [0, 0.25, 0.5, 0.75],
+      cssClass: 'half-page-modal',
+      showBackdrop: true,
+      backdropDismiss: true,
+      componentProps: {
+        item
+      }
+    });
+
+    await modal.present();
   }
 
   capitalizeFirstLetter(str: string): string {

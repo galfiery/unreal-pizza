@@ -1,5 +1,11 @@
-<ion-modal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-  <ng-template>
-    <div class="block">Block of Content</div>
-  </ng-template>
-</ion-modal>
+<ion-content class="modal-wrapper">
+  <div class="ion-padding">
+    <div class="image-item"> <img [src]="'../../../assets/images/pizza_1.avif'" /></div>
+    <h3> {{capitalizeFirstLetter(item.name)}} </h3>
+    <p> {{capitalizeFirstLetter(item.description)}} </p>
+    <ion-buttons>
+      <ion-button color="primary"> Add to cart </ion-button>
+    </ion-buttons>
+  </div>
+
+</ion-content>

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Item } from 'src/app/models/item.model';
+import { BaseService } from 'src/app/services/base.service';
 
 @Component({
   selector: 'app-item-info',
@@ -8,14 +10,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ItemInfoComponent  implements OnInit {
 
   @Input()
-  itemId: number = 0;
+  item: any;
 
-  constructor() { }
+  constructor(private baseService: BaseService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.item);
+  }
 
   dismiss() {
 
+  }
+
+  capitalizeFirstLetter(str: string): string {
+    return this.baseService.capitalizeFirstLetter(str);
   }
 
 }

@@ -3,25 +3,13 @@
     <h3 class="list-title"> {{title}} </h3>
 
     <ion-list>
-      <ion-item detail="true" *ngFor="let item of itemList; let idx = index;" [id]="'open-modal-' + idx" expand="block">
+      <ion-item detail="true" *ngFor="let item of itemList; let idx = index;" (click)="openInfo(item)">
         <ion-label>
           <h2 class="item-title">{{capitalizeFirstLetter(item.name)}}</h2>
           <p>{{capitalizeFirstLetter(item.description)}}</p>
           <p> {{item.price}} {{item.currency}} </p>
           <ion-chip *ngIf="item.promotion" color="danger"> {{capitalizeFirstLetter(item.promotion)}} </ion-chip>
         </ion-label>
-        <ion-modal [trigger]="'open-modal-' + idx" [initialBreakpoint]="1" [breakpoints]="[0, 1]" handleBehavior="cycle">
-          <ng-template>
-            <div class="ion-padding">
-              <div class="image-item"> <img [src]="'../../../assets/images/pizza_1.avif'" /></div>
-              <h3> {{capitalizeFirstLetter(item.name)}} </h3>
-              <p> {{capitalizeFirstLetter(item.description)}} </p>
-              <ion-buttons>
-                <ion-button color="primary"> Add to cart </ion-button>
-              </ion-buttons>
-            </div>
-          </ng-template>
-        </ion-modal>
       </ion-item>
     </ion-list>
   </div>
