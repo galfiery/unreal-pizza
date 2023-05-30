@@ -4,17 +4,17 @@
 
     <div class="search-container">
       <ion-item>
-        <ion-input placeholder="Pizza, dessert, drink ecc"></ion-input>
+        <ion-input placeholder="Pizza, dessert, drink ecc" (ionInput)="search($event)"></ion-input>
         <ion-icon name="search-outline"></ion-icon>
       </ion-item>
     </div>
 
-    <div class="grid-container">
+    <div class="grid-container" *ngIf="!searching">
       <ion-grid>
         <ion-row>
           <ion-col>
             <div class="item-grid normal-pizza-item" routerLink="/tabs/item-list/classic">
-              <label class="item-label">Classic</label>
+              <label class="item-label-grid">Classic</label>
             </div>
           </ion-col>
           <ion-col>
@@ -22,19 +22,19 @@
               <div class="item-badge">
                 Promotions!
               </div>
-              <label class="item-label">Special</label>
+              <label class="item-label-grid">Special</label>
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <div class="item-grid dessert-item" routerLink="/tabs/item-list/dessert">
-              <label class="item-label">Dessert</label>
+              <label class="item-label-grid">Dessert</label>
             </div>
           </ion-col>
           <ion-col>
             <div class="item-grid drink-item" routerLink="/tabs/item-list/drink">
-              <label class="item-label">Drink</label>
+              <label class="item-label-grid">Drink</label>
             </div>
           </ion-col>
         </ion-row>
@@ -42,11 +42,36 @@
         <ion-row>
           <ion-col>
             <div class="item-grid pizza-week-item" routerLink="/tabs/item-list/week">
-              <label class="item-label">Pizzas of the week</label>
+              <label class="item-label-grid">Pizzas of the week</label>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
+    </div>
+
+    <div class="grid-container" *ngIf="searching">
+      <ion-list>
+        <ion-item detail="true" *ngFor="let item of itemList; let idx = index;" [id]="'open-modal-' + idx" expand="block">
+          <ion-label>
+            <h2 class="item-title">{{capitalizeFirstLetter(item.name)}}</h2>
+            <p>{{capitalizeFirstLetter(item.description)}}</p>
+            <p> {{item.price}} {{item.currency}} </p>
+            <ion-chip *ngIf="item.promotion" color="danger"> {{capitalizeFirstLetter(item.promotion)}} </ion-chip>
+          </ion-label>
+          <ion-modal [trigger]="'open-modal-' + idx" [initialBreakpoint]="1" [breakpoints]="[0, 1]" handleBehavior="cycle">
+            <ng-template>
+              <div class="ion-padding">
+                <div class="image-item"> <img [src]="'../../../assets/images/pizza_1.avif'" /></div>
+                <h3> {{capitalizeFirstLetter(item.name)}} </h3>
+                <p> {{capitalizeFirstLetter(item.description)}} </p>
+                <ion-buttons>
+                  <ion-button color="primary"> Add to cart </ion-button>
+                </ion-buttons>
+              </div>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+      </ion-list>
     </div>
 
   </div>
