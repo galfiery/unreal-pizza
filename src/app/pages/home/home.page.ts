@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Item } from 'src/app/models/item.model';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -17,8 +18,8 @@ export class HomePage {
   async search(event: any) {
     if (event?.detail?.value) {
       this.itemList = [];
-      const classicPizzaItems: any [] = await this.itemService.findAllClassicPizza();
-      for (let item of classicPizzaItems) {
+      const itemsAvailables: any [] = await this.getAllItemsAvailables();
+      for (let item of itemsAvailables) {
         if (item.name.includes(event?.detail?.value)) {
           this.itemList.push(item);
         }
@@ -27,6 +28,14 @@ export class HomePage {
     } else {
       this.searching = false;
     }
+  }
+
+  private async getAllItemsAvailables(): Promise<Item []> {
+    let itemsAvailables: Item [] = [];
+    const classicPizzaItems: Item [] = await this.itemService.findAllClassicPizza();
+    const specialPizzaItems: Item [] = await this.itemService.findAllSpecialPizza();
+    itemsAvailables = classicPizzaItems.concat(specialPizzaItems);
+    return itemsAvailables
   }
 
   capitalizeFirstLetter(str: string): string {
