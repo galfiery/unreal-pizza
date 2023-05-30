@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
+import { BaseService } from 'src/app/services/base.service';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -13,7 +14,9 @@ export class HomePage {
 
   itemList: any = [];
 
-  constructor(private itemService: ItemService) {}
+  constructor(
+    private itemService: ItemService,
+    private baseService: BaseService) {}
 
   async search(event: any) {
     if (event?.detail?.value) {
@@ -39,14 +42,7 @@ export class HomePage {
   }
 
   capitalizeFirstLetter(str: string): string {
-    if (str.length === 0) {
-      return str;
-    }
-
-    const firstLetter = str.charAt(0).toUpperCase();
-    const remainingLetters = str.slice(1);
-
-    return firstLetter + remainingLetters;
+    return this.baseService.capitalizeFirstLetter(str);
   }
 
 }

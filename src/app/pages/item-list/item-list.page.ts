@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { Section } from 'src/app/common/section-enum';
 import { ItemInfoComponent } from 'src/app/components/item-info/item-info.component';
 import { Item } from 'src/app/models/item.model';
+import { BaseService } from 'src/app/services/base.service';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class ItemListPage implements OnInit {
   constructor(
     private itemService: ItemService,
     private route: ActivatedRoute,
+    private baseService: BaseService
   ) { }
 
   ngOnInit() {
@@ -54,14 +56,7 @@ export class ItemListPage implements OnInit {
   }
 
   capitalizeFirstLetter(str: string): string {
-    if (str.length === 0) {
-      return str;
-    }
-
-    const firstLetter = str.charAt(0).toUpperCase();
-    const remainingLetters = str.slice(1);
-
-    return firstLetter + remainingLetters;
+    return this.baseService.capitalizeFirstLetter(str);
   }
 
   async getClassicList(): Promise<Item []> {

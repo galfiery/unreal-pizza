@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BaseService } from 'src/app/services/base.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,7 +11,10 @@ export class ShoppingCartPage {
 
   itemList: any = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private baseService: BaseService
+    ) {}
 
   async ionViewWillEnter() {
     this.itemList = await this.getItemList();
@@ -22,14 +26,7 @@ export class ShoppingCartPage {
   }
 
   capitalizeFirstLetter(str: string): string {
-    if (str.length === 0) {
-      return str;
-    }
-
-    const firstLetter = str.charAt(0).toUpperCase();
-    const remainingLetters = str.slice(1);
-
-    return firstLetter + remainingLetters;
+    return this.baseService.capitalizeFirstLetter(str);
   }
 
 }
