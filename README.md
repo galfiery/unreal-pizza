@@ -20,6 +20,7 @@ Here are some screenshots of the Unreal Pizza app:
   <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_2.png" alt="Image 2" width="250">
   <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_3.png" alt="Image 3" width="250">
   <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_4.png" alt="Image 3" width="250">
+  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_5.png" alt="Image 3" width="250">
 </div>
 
 ## Installation
