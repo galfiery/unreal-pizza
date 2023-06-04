@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
+import { CacheService } from './cache.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private cacheService: CacheService,
   ) { }
 
   async getUserLogged(): Promise<User> {
@@ -23,5 +25,10 @@ export class UserService {
         reject(err);
       }
     });
+  }
+
+  async getAccessToken(): Promise<string | null> {
+    const token = await this.cacheService.getToken();
+    return token;
   }
 }

@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { ItemInfoComponent } from 'src/app/components/item-info/item-info.component';
 import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
+import { CacheService } from 'src/app/services/cache.service';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class HomePage {
     private itemService: ItemService,
     private baseService: BaseService,
     private modalController: ModalController,
+    private cacheService: CacheService
   ) {}
 
   async search(event: any) {
