@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../models/item.model';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { Section } from '../common/section-enum';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ItemService {
   async findAllClassicPizza(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`/item/get-by-category-type/classic_pizza`)
+        this.httpClient.get(`/item/get-by-category-type/${Section.CLASSIC}`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -28,7 +28,7 @@ export class ItemService {
   async findAllSpecialPizza(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`/item/get-by-category-type/special_pizza`)
+        this.httpClient.get(`/item/get-by-category-type/${Section.SPECIAL}`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -41,7 +41,7 @@ export class ItemService {
   async findAllDrink(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`/item/get-by-category-type/drink`)
+        this.httpClient.get(`/item/get-by-category-type/${Section.DRINK}`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -54,7 +54,7 @@ export class ItemService {
   async findAllDessert(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`/item/get-by-category-type/dessert`)
+        this.httpClient.get(`/item/get-by-category-type/${Section.DESSERT}`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -67,7 +67,7 @@ export class ItemService {
   async findAllPizzaWeek(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`/item/get-by-category-type/week`)
+        this.httpClient.get(`/item/get-by-category-type/${Section.WEEK}`)
         .subscribe((res: any) => {
           resolve(res);
         });
