@@ -28,7 +28,7 @@ export class ItemService {
   async findAllSpecialPizza(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`item/get-by-category-type/special_pizza`)
+        this.httpClient.get(`/item/get-by-category-type/special_pizza`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -41,7 +41,7 @@ export class ItemService {
   async findAllDrink(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`${environment.apiUrl}items/get-by-category-type/drink`)
+        this.httpClient.get(`/item/get-by-category-type/drink`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -54,7 +54,7 @@ export class ItemService {
   async findAllDessert(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        this.httpClient.get(`${environment.apiUrl}items/get-by-category-type/dessert`)
+        this.httpClient.get(`/item/get-by-category-type/dessert`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -67,8 +67,7 @@ export class ItemService {
   async findAllPizzaWeek(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        const endpoint = '../../assets/mocked-data/pizza-week.json';
-        this.httpClient.get(endpoint)
+        this.httpClient.get(`/item/get-by-category-type/week`)
         .subscribe((res: any) => {
           resolve(res);
         });
