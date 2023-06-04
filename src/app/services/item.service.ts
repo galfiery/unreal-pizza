@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../models/item.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,7 @@ export class ItemService {
   async findAllClassicPizza(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        const endpoint = '../../assets/mocked-data/classic-pizza.json';
-        this.httpClient.get(endpoint)
+        this.httpClient.get(`/item/get-by-category-type/classic_pizza`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -28,8 +28,7 @@ export class ItemService {
   async findAllSpecialPizza(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        const endpoint = '../../assets/mocked-data/special-pizza.json';
-        this.httpClient.get(endpoint)
+        this.httpClient.get(`item/get-by-category-type/special_pizza`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -42,8 +41,7 @@ export class ItemService {
   async findAllDrink(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        const endpoint = '../../assets/mocked-data/drink.json';
-        this.httpClient.get(endpoint)
+        this.httpClient.get(`${environment.apiUrl}items/get-by-category-type/drink`)
         .subscribe((res: any) => {
           resolve(res);
         });
@@ -56,8 +54,7 @@ export class ItemService {
   async findAllDessert(): Promise<Item []> {
     return new Promise((resolve, reject) => {
       try {
-        const endpoint = '../../assets/mocked-data/dessert.json';
-        this.httpClient.get(endpoint)
+        this.httpClient.get(`${environment.apiUrl}items/get-by-category-type/dessert`)
         .subscribe((res: any) => {
           resolve(res);
         });
