@@ -1,5 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,23 +14,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   authService = inject(AuthService);
 
   loginForm: FormGroup;
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private router: Router
-  ) {
+  constructor(public formBuilder: FormBuilder, private router: Router) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async submit() {
     if (this.loginForm.invalid) {
@@ -34,7 +34,10 @@ export class LoginPage implements OnInit {
 
     try {
       const body = this.loginForm.value;
-      const response = await this.authService.login(body.username, body.password);
+      const response = await this.authService.login(
+        body.username,
+        body.password
+      );
       if (response) {
         this.router.navigateByUrl('/tabs/home');
       }
@@ -43,5 +46,4 @@ export class LoginPage implements OnInit {
       console.log(err);
     }
   }
-
 }

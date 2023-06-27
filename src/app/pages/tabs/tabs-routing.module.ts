@@ -10,25 +10,36 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule),
+        loadChildren: () =>
+          import('../home/home.module').then((m) => m.HomePageModule),
       },
       {
         path: 'order-history',
-        loadChildren: () => import('../order-history/order-history.module').then(m => m.OrderHistoryPageModule)
+        loadChildren: () =>
+          import('../order-history/order-history.module').then(
+            (m) => m.OrderHistoryPageModule
+          ),
       },
       {
         path: 'shopping-cart',
-        loadChildren: () => import('../shopping-cart/shopping-cart.module').then(m => m.ShoppingCartPageModule)
+        loadChildren: () =>
+          import('../shopping-cart/shopping-cart.module').then(
+            (m) => m.ShoppingCartPageModule
+          ),
       },
       {
         path: 'profile',
-        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
+        loadChildren: () =>
+          import('../profile/profile.module').then((m) => m.ProfilePageModule),
       },
       {
         path: 'item-list/:section',
-        loadChildren: () => import('../item-list/item-list.module').then( m => m.ItemListPageModule)
+        loadChildren: () =>
+          import('../item-list/item-list.module').then(
+            (m) => m.ItemListPageModule
+          ),
       },
-    ]
+    ],
   },
 ];
 

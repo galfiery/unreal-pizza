@@ -4,10 +4,9 @@ import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss']
+  styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage {
-
   cartItems: number = 0;
 
   constructor(private cartService: CartService) {}
@@ -15,8 +14,7 @@ export class TabsPage {
   async ngOnInit() {
     this.cartItems = await this.getCartItems();
 
-    this.cartService.getCartObs()
-    .subscribe((items) => {
+    this.cartService.getCartObs().subscribe((items) => {
       this.cartItems = items;
     });
   }
@@ -25,6 +23,4 @@ export class TabsPage {
     const items = await this.cartService.getItemCounter();
     return items;
   }
-
-
 }
