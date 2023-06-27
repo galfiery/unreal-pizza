@@ -12,15 +12,15 @@ export class AuthService {
     private cacheService: CacheService,
   ) { }
 
-  async login(username: string, password: string): Promise<any> {
+  async login(username: string, password: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
         this.httpClient.post(`/auth/login`, { username, password })
         .subscribe(async (res: any) => {
           await this.setAuthInfo(res);
-          resolve(res);
+          resolve(true);
         }, (err) => {
-          reject(null);
+          reject(false);
         });
       } catch (err) {
         reject(err);

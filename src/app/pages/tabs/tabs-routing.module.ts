@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from 'src/app/guards/auth-guard';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule),
       },
       {
         path: 'order-history',
@@ -27,18 +28,8 @@ const routes: Routes = [
         path: 'item-list/:section',
         loadChildren: () => import('../item-list/item-list.module').then( m => m.ItemListPageModule)
       },
-      {
-        path: '',
-        redirectTo: '/tabs/home',
-        pathMatch: 'full'
-      }
     ]
   },
-  {
-    path: '',
-    redirectTo: '/tabs/home',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({

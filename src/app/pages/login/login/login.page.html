@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+      <ion-item>
+        <ion-input placeholder="Username" formControlName="username" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Password" formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="danger" type="submit">Login</ion-button>
+    </form>
+  </div>
+</ion-content>
