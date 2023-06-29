@@ -1,19 +1,25 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="container">
-    <h3 class="list-title"> Shopping Cart </h3>
+  <div class="container" *ngIf="cartItems$ | async as itemList">
+    <h3 class="list-title">Shopping Cart</h3>
 
-    <ion-item detail="true" *ngFor="let item of itemList; let idx = index;" (click)="openInfo(item)">
+    <ion-item
+      detail="true"
+      *ngFor="let item of itemList; let idx = index;"
+      (click)="openInfo(item)"
+    >
       <ion-thumbnail slot="start">
-        <img alt="Silhouette of mountains" [src]="'../../../assets/images/pizza_1.avif'" />
+        <img
+          alt="Silhouette of mountains"
+          [src]="'../../../assets/images/pizza_1.avif'"
+        />
       </ion-thumbnail>
       <ion-label class="ion-text-wrap">
         {{capitalizeFirstLetter(item.name)}}
-        <p> {{ item.currency }} {{item.price}} </p>
+        <p>{{ item.currency }} {{item.price}}</p>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button color="danger"> Remove </ion-button>
       </ion-buttons>
     </ion-item>
-
   </div>
 </ion-content>

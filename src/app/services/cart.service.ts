@@ -1,47 +1,33 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Item } from '../models/item.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
+  httpClient: HttpClient = inject(HttpClient);
 
-  cartObs: Subject<number> = new Subject();
+  savedItems$: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
 
-  constructor(private httpClient: HttpClient) { }
+  constructor() {}
 
-  async getItemList(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      try {
-        const endpoint = '../../assets/mocked-data/cart-items.json';
-        this.httpClient.get(endpoint)
-        .subscribe((res: any) => {
-          resolve(res);
-        });
-      } catch (err) {
-        reject (err);
-      }
-    });
+  getSavedItems(): Observable<Item[]> {
+    return this.savedItems$.asObservable();
   }
 
-  async getItemCounter(): Promise<number> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const items: any = await this.getItemList();
-        resolve(items?.length || 0);
-      } catch (err) {
-        reject (err);
-      }
-    });
+  addItem(newItem: Item) {
+    const savedItems: Item[] = this.savedItems$.getValue();
+    savedItems.push(newItem);
+    this.savedItems$.next(savedItems);
   }
 
-  getCartObs(): Observable<number> {
-    return this.cartObs.asObservable();
+  removeItem(item: Item) {
+    const savedItems: Item[] = this.savedItems$.getValue();
+    const removeId: number = savedItems.findIndex(
+      (it: Item) => it.id === item.id
+    );
+    this.savedItems$.next(savedItems.slice(removeId));
   }
-
-  refreshCartObs(items: number) {
-    this.cartObs.next(items);
-  }
-
 }

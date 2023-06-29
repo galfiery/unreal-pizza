@@ -33,7 +33,7 @@ export class ItemListPage implements OnInit {
     });
   }
 
-  async openInfo(item: any) {
+  async openInfo(item: Item) {
     const modal = await this.modalCtrl.create({
       component: ItemInfoComponent,
       initialBreakpoint: 0.4,

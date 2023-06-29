@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Item } from 'src/app/models/item.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -7,20 +9,9 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage {
-  cartItems: number = 0;
+  cartService: CartService = inject(CartService);
 
-  constructor(private cartService: CartService) {}
+  cartItems$: Observable<Item []> = this.cartService.getSavedItems();
 
-  async ngOnInit() {
-    this.cartItems = await this.getCartItems();
-
-    this.cartService.getCartObs().subscribe((items) => {
-      this.cartItems = items;
-    });
-  }
-
-  async getCartItems() {
-    const items = await this.cartService.getItemCounter();
-    return items;
-  }
+  constructor() {}
 }

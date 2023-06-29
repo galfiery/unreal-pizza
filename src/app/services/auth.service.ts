@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CacheService } from './cache.service';
 import { Observable, map, tap } from 'rxjs';
 
@@ -7,10 +7,10 @@ import { Observable, map, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private httpClient: HttpClient,
-    private cacheService: CacheService
-  ) {}
+  httpClient: HttpClient = inject(HttpClient);
+  cacheService: CacheService = inject(CacheService);
+
+  constructor() {}
 
   login(username: string, password: string): Observable<boolean> {
     return this.httpClient.post(`/auth/login`, { username, password }).pipe(
