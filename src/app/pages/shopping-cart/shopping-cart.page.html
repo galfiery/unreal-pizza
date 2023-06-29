@@ -4,8 +4,7 @@
 
     <ion-item
       detail="true"
-      *ngFor="let item of itemList; let idx = index;"
-      (click)="openInfo(item)"
+      *ngFor="let item of itemList"
     >
       <ion-thumbnail slot="start">
         <img
@@ -13,12 +12,12 @@
           [src]="'../../../assets/images/pizza_1.avif'"
         />
       </ion-thumbnail>
-      <ion-label class="ion-text-wrap">
+      <ion-label class="ion-text-wrap" (click)="openInfo(item)">
         {{capitalizeFirstLetter(item.name)}}
         <p>{{ item.currency }} {{item.price}}</p>
       </ion-label>
       <ion-buttons slot="end">
-        <ion-button color="danger"> Remove </ion-button>
+        <ion-button color="danger" (click)="removeItem(item)"> Remove </ion-button>
       </ion-buttons>
     </ion-item>
   </div>

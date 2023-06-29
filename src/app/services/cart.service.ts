@@ -28,6 +28,7 @@ export class CartService {
     const removeId: number = savedItems.findIndex(
       (it: Item) => it.id === item.id
     );
-    this.savedItems$.next(savedItems.slice(removeId));
+    savedItems.splice(removeId, 1);
+    this.savedItems$.next(savedItems);
   }
 }

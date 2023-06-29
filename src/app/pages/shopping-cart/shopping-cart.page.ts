@@ -39,4 +39,8 @@ export class ShoppingCartPage {
   capitalizeFirstLetter(str: string): string {
     return this.baseService.capitalizeFirstLetter(str);
   }
+
+  removeItem(item: Item) {
+    this.cartService.removeItem(item);
+  }
 }
