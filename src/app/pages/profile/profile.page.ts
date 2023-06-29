@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { BaseService } from 'src/app/services/base.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,21 +9,15 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
+  userService: UserService = inject(UserService);
+  baseService: BaseService = inject(BaseService);
 
-  userLogged: User | undefined;
+  userLogged$: Observable<User> = this.userService.getUserLogged();
 
-  constructor(
-    private userService: UserService
-  ) { }
+  constructor() {}
 
-  async ngOnInit() {
-    this.userLogged = await this.getUserInfo();
+  capitalizeFirstLetter(str: string): string {
+    return this.baseService.capitalizeFirstLetter(str);
   }
-
-  async getUserInfo(): Promise<User> {
-    const userLogged = await this.userService.getUserLogged();
-    return userLogged;
-  }
-
 }

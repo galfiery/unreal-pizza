@@ -7,23 +7,15 @@ import { BaseService } from 'src/app/services/base.service';
   templateUrl: './item-info.component.html',
   styleUrls: ['./item-info.component.scss'],
 })
-export class ItemInfoComponent  implements OnInit {
-
+export class ItemInfoComponent {
   @Input()
   item: any;
 
-  constructor(private baseService: BaseService) { }
+  constructor(private baseService: BaseService) {}
 
-  ngOnInit() {
-    console.log(this.item);
-  }
-
-  dismiss() {
-
-  }
+  dismiss() {}
 
   capitalizeFirstLetter(str: string): string {
     return this.baseService.capitalizeFirstLetter(str);
   }
-
 }

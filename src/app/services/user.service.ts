@@ -1,29 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { CacheService } from './cache.service';
-import { Observable, filter, map } from 'rxjs';
+import {
+  Observable,
+  combineLatest,
+  distinctUntilChanged,
+  filter,
+  map,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(
-    private httpClient: HttpClient,
-    private cacheService: CacheService
-  ) {}
+  httpClient: HttpClient = inject(HttpClient);
+  cacheService: CacheService = inject(CacheService);
 
-  async getUserLogged(): Promise<User> {
-    return new Promise((resolve, reject) => {
-      try {
-        const endpoint = '../../assets/mocked-data/user-logged.json';
-        this.httpClient.get(endpoint).subscribe((res: any) => {
-          resolve(res);
+  constructor() {}
+
+  getUserLogged(): Observable<User> {
+    return combineLatest(
+      this.cacheService.getFirstName(),
+      this.cacheService.getLastName(),
+      this.cacheService.getUsername(),
+      this.cacheService.getEmail()
+    ).pipe(
+      distinctUntilChanged(),
+      map(([firstName, lastName, username, email]: [any, any, any, any]) => {
+        return new User({
+          firstName: firstName.value,
+          lastName: lastName.value,
+          username: username.value,
+          email: email.value,
         });
-      } catch (err) {
-        reject(err);
-      }
-    });
+      })
+    );
   }
 
   getAccessToken(): Observable<string | null> {

@@ -1,10 +1,10 @@
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="userLogged$ | async as userLogged">
   <div class="container ion-text-wrap">
     <ion-item lines="full">
       <ion-avatar slot="end">
         <img src="../../../assets/images/profile.jpg" />
       </ion-avatar>
-      <h1> {{userLogged?.firstName }} {{userLogged?.lastName}}</h1>
+      <h1> {{capitalizeFirstLetter(userLogged.firstName) }} {{capitalizeFirstLetter(userLogged.lastName)}}</h1>
     </ion-item>
   </div>
 

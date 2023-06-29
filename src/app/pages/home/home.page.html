@@ -67,7 +67,7 @@
       <ion-list *ngIf="filteredItems$ | async as filteredItems">
         <ion-item
           detail="true"
-          *ngFor="let item of filteredItems; let idx = index;"
+          *ngFor="let item of filteredItems"
           (click)="openInfo(item)"
         >
           <ion-label>
