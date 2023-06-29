@@ -12,19 +12,19 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './item-listing.component.html',
   styleUrls: ['./item-listing.component.scss'],
 })
-export class ItemListingComponent  implements OnInit {
+export class ItemListingComponent implements OnInit {
   baseService: BaseService = inject(BaseService);
   modalCtrl: ModalController = inject(ModalController);
   itemService: ItemService = inject(ItemService);
   cartService: CartService = inject(CartService);
 
   @Input()
-  items$: Observable<Item []> = new Observable<Item []>
+  items$: Observable<Item[]> = new Observable<Item[]>();
 
   @Input()
   showMoreInfo: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 
@@ -51,5 +51,4 @@ export class ItemListingComponent  implements OnInit {
   removeItem(item: Item) {
     this.cartService.removeItem(item);
   }
-
 }
