@@ -17,31 +17,31 @@ ion-col {
 }
 
 .normal-pizza-item {
-  background-image: url('../../../assets/images/pizza_1.avif');
+  background-image: url("../../../assets/images/pizza_1.avif");
   background-size: cover;
   background-position: center;
 }
 
 .special-pizza-item {
-  background-image: url('../../../assets/images/pizza_2.avif');
+  background-image: url("../../../assets/images/pizza_2.avif");
   background-size: cover;
   background-position: center;
 }
 
 .pizza-week-item {
-  background-image: url('../../../assets/images/pizza_3.avif');
+  background-image: url("../../../assets/images/pizza_3.avif");
   background-size: cover;
   background-position: center;
 }
 
 .dessert-item {
-  background-image: url('../../../assets/images/dessert_1.avif');
+  background-image: url("../../../assets/images/dessert_1.avif");
   background-size: cover;
   background-position: center;
 }
 
 .drink-item {
-  background-image: url('../../../assets/images/beverage_1.avif');
+  background-image: url("../../../assets/images/beverage_1.avif");
   background-size: cover;
   background-position: center;
 }
@@ -57,7 +57,7 @@ ion-col {
 }
 
 .grid-container {
-  padding-top: 30px;
+  height: 600px;
 }
 
 .search-container {
@@ -91,5 +91,10 @@ ion-modal {
 .image-item {
   width: 150px;
   height: auto;
+  margin: 0 auto;
+}
+
+.list-item {
+  width: 300px;
   margin: 0 auto;
 }
