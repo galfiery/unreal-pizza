@@ -1,0 +1,37 @@
+<cdk-virtual-scroll-viewport
+  itemSize="56"
+  minBufferPx="900"
+  maxBufferPx="1350"
+  class="item-list-scroller"
+  *ngIf="items$ | async as itemList"
+>
+  <ion-list class="item-list-container">
+    <ion-item
+      detail="true"
+      class="item-content"
+      *cdkVirtualFor="let item of itemList"
+    >
+      <ion-thumbnail slot="start" *ngIf="showMoreInfo">
+        <img
+          alt="Silhouette of mountains"
+          [src]="'../../../assets/images/pizza_1.avif'"
+        />
+      </ion-thumbnail>
+      <ion-label (click)="openInfo(item)">
+        <h2 class="item-title">{{ capitalizeFirstLetter(item.name) }}</h2>
+        <p *ngIf="!showMoreInfo">
+          {{ capitalizeFirstLetter(item.description) }}
+        </p>
+        <p>{{ item.price }} {{ item.currency | uppercase }}</p>
+        <ion-chip *ngIf="item.promotion" color="danger">
+          {{ capitalizeFirstLetter(item.promotion) }}
+        </ion-chip>
+      </ion-label>
+      <ion-buttons slot="end" *ngIf="showMoreInfo">
+        <ion-button color="danger" (click)="removeItem(item)">
+          Remove
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</cdk-virtual-scroll-viewport>

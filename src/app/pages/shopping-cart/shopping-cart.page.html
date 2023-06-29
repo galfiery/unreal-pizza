@@ -2,35 +2,6 @@
   <div class="container">
     <h3 class="list-title">{{ 'page.title.shopping_cart' | translate }}</h3>
 
-    <cdk-virtual-scroll-viewport
-      itemSize="4"
-      minBufferPx="1000"
-      maxBufferPx="1350"
-      class="item-list-scroller"
-    >
-      <ion-list class="item-list-container">
-        <ion-item
-          detail="true"
-          class="item-content"
-          *cdkVirtualFor="let item of cartItems$ | async as itemList"
-        >
-          <ion-thumbnail slot="start">
-            <img
-              alt="Silhouette of mountains"
-              [src]="'../../../assets/images/pizza_1.avif'"
-            />
-          </ion-thumbnail>
-          <ion-label class="ion-text-wrap" (click)="openInfo(item)">
-            {{capitalizeFirstLetter(item.name)}}
-            <p>{{item.price}} {{ item.currency | uppercase }}</p>
-          </ion-label>
-          <ion-buttons slot="end">
-            <ion-button color="danger" (click)="removeItem(item)">
-              Remove
-            </ion-button>
-          </ion-buttons>
-        </ion-item>
-      </ion-list>
-    </cdk-virtual-scroll-viewport>
+    <app-item-listing [items$]="cartItems$" [showMoreInfo]="true"></app-item-listing>
   </div>
 </ion-content>

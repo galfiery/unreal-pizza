@@ -64,31 +64,7 @@
     </div>
 
     <ng-container *ngIf="(searching$ | async) === true">
-      <cdk-virtual-scroll-viewport
-        itemSize="56"
-        minBufferPx="900"
-        maxBufferPx="1350"
-        class="item-list-scroller"
-        *ngIf="filteredItems$ | async as filteredItems"
-      >
-        <ion-list class="item-list-container">
-          <ion-item
-            detail="true"
-            class="item-content"
-            *cdkVirtualFor="let item of filteredItems"
-            (click)="openInfo(item)"
-          >
-            <ion-label>
-              <h2 class="item-title">{{capitalizeFirstLetter(item.name)}}</h2>
-              <p>{{capitalizeFirstLetter(item.description)}}</p>
-              <p>{{item.price}} {{item.currency | uppercase}}</p>
-              <ion-chip *ngIf="item.promotion" color="danger">
-                {{capitalizeFirstLetter(item.promotion)}}
-              </ion-chip>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </cdk-virtual-scroll-viewport>
+      <app-item-listing [items$]="filteredItems$"></app-item-listing>
     </ng-container>
   </div>
 </ion-content>

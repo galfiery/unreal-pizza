@@ -8,6 +8,7 @@ import { ItemListPageRoutingModule } from './item-list-routing.module';
 
 import { ItemListPage } from './item-list.page';
 import { SharedModulesModule } from 'src/app/modules/shared-modules.module';
+import { SharedComponentsModule } from 'src/app/modules/shared-components.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { SharedModulesModule } from 'src/app/modules/shared-modules.module';
     IonicModule,
     ItemListPageRoutingModule,
     SharedModulesModule,
+    SharedComponentsModule,
   ],
   declarations: [ItemListPage],
 })
