@@ -31,7 +31,7 @@ export class ItemListingComponent implements OnInit {
   async openInfo(item: Item) {
     const modal = await this.modalCtrl.create({
       component: ItemInfoComponent,
-      initialBreakpoint: 0.4,
+      initialBreakpoint: 0.35,
       breakpoints: [0, 0.25, 0.5, 0.75],
       cssClass: 'half-page-modal',
       showBackdrop: true,
