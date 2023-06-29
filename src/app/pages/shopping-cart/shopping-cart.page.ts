@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { ItemInfoComponent } from 'src/app/components/item-info/item-info.component';
 import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
@@ -16,7 +16,7 @@ export class ShoppingCartPage {
   baseService: BaseService = inject(BaseService);
   modalCtrl: ModalController = inject(ModalController);
 
-  cartItems$: Observable<Item[]> = this.cartService.getSavedItems();
+  cartItems$: Observable<Item[]> = this.cartService.getSavedItems().pipe(shareReplay());
 
   constructor() {}
 

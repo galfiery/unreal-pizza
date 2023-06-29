@@ -18,13 +18,13 @@ export class CartService {
   }
 
   addItem(newItem: Item) {
-    const savedItems: Item[] = this.savedItems$.getValue();
+    const savedItems: Item[] = [...this.savedItems$.getValue()];
     savedItems.push(newItem);
     this.savedItems$.next(savedItems);
   }
 
   removeItem(item: Item) {
-    const savedItems: Item[] = this.savedItems$.getValue();
+    const savedItems: Item[] = [...this.savedItems$.getValue()];
     const removeId: number = savedItems.findIndex(
       (it: Item) => it.id === item.id
     );
