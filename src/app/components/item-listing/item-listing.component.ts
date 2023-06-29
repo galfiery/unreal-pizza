@@ -51,4 +51,8 @@ export class ItemListingComponent implements OnInit {
   removeItem(item: Item) {
     this.cartService.removeItem(item);
   }
+
+  addItem(item: Item) {
+    this.cartService.addItem(item);
+  }
 }

@@ -6,32 +6,41 @@
   *ngIf="items$ | async as itemList"
 >
   <ion-list class="item-list-container">
-    <ion-item
-      detail="true"
-      class="item-content"
-      *cdkVirtualFor="let item of itemList"
-    >
-      <ion-thumbnail slot="start" *ngIf="showMoreInfo">
-        <img
-          alt="Silhouette of mountains"
-          [src]="'../../../assets/images/pizza_1.avif'"
-        />
-      </ion-thumbnail>
-      <ion-label (click)="openInfo(item)">
-        <h2 class="item-title">{{ capitalizeFirstLetter(item.name) }}</h2>
-        <p *ngIf="!showMoreInfo">
-          {{ capitalizeFirstLetter(item.description) }}
-        </p>
-        <p>{{ item.price }} {{ item.currency | uppercase }}</p>
-        <ion-chip *ngIf="item.promotion" color="danger">
-          {{ capitalizeFirstLetter(item.promotion) }}
-        </ion-chip>
-      </ion-label>
-      <ion-buttons slot="end" *ngIf="showMoreInfo">
-        <ion-button color="danger" (click)="removeItem(item)">
-          Remove
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
+    <ion-item-sliding *cdkVirtualFor="let item of itemList">
+      <ion-item detail="true" class="item-content">
+        <ion-thumbnail slot="start" *ngIf="showMoreInfo">
+          <img
+            alt="Silhouette of mountains"
+            [src]="'../../../assets/images/pizza_1.avif'"
+          />
+        </ion-thumbnail>
+        <ion-label (click)="openInfo(item)">
+          <h2 class="item-title">{{ capitalizeFirstLetter(item.name) }}</h2>
+          <p *ngIf="!showMoreInfo">
+            {{ capitalizeFirstLetter(item.description) }}
+          </p>
+          <p>{{ item.price }} {{ item.currency | uppercase }}</p>
+          <ion-chip *ngIf="item.promotion" color="danger">
+            {{ capitalizeFirstLetter(item.promotion) }}
+          </ion-chip>
+        </ion-label>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option
+          *ngIf="!showMoreInfo"
+          color="success"
+          class="item-sliding-option"
+          (click)="addItem(item)"
+          ><ion-icon name="cart-outline"></ion-icon
+        ></ion-item-option>
+        <ion-item-option
+          *ngIf="showMoreInfo"
+          color="danger"
+          class="item-sliding-option"
+          (click)="removeItem(item)"
+          ><ion-icon name="trash-outline"></ion-icon
+        ></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </cdk-virtual-scroll-viewport>
