@@ -16,7 +16,9 @@ export class ShoppingCartPage {
   baseService: BaseService = inject(BaseService);
   modalCtrl: ModalController = inject(ModalController);
 
-  cartItems$: Observable<Item[]> = this.cartService.getSavedItems().pipe(shareReplay());
+  cartItems$: Observable<Item[]> = this.cartService
+    .getSavedItems()
+    .pipe(shareReplay());
 
   constructor() {}
 

@@ -16,7 +16,7 @@
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import '@ionic/angular/css/display.css';
+@import "@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -29,11 +29,16 @@ cdk-virtual-scroll-viewport {
   height: 100%;
 }
 
-.list-item {
-  width: 300px;
+.item-content {
   margin: 0 auto;
 }
 
 .item-list-scroller {
   height: 550px;
+}
+
+.item-list-container {
+  max-width: 320px;
+  min-width: 200px;
+  margin: 0 auto;
 }

@@ -11,10 +11,10 @@
       class="item-list-scroller"
       *ngIf="items$ | async as itemList"
     >
-      <ion-list>
+      <ion-list class="item-list-container">
         <ion-item
           detail="true"
-          class="list-item"
+          class="item-content"
           *cdkVirtualFor="let item of itemList"
           (click)="openInfo(item)"
         >
