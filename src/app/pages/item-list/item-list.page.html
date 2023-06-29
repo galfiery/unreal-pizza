@@ -4,7 +4,9 @@
   *ngIf="items$ | async as itemList"
 >
   <div class="container">
-    <h3 class="list-title">{{title}}</h3>
+    <h3 class="list-title" *ngIf="paramMap$ | async as route">
+      {{('page.title.' + route.get('section')) | translate}}
+    </h3>
 
     <ion-list>
       <ion-item

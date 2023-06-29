@@ -1,0 +1,12 @@
+{
+  "page": {
+    "title": {
+      "classic_pizza": "Pizze classiche",
+      "special_pizza": "Pizze speciali",
+      "drink": "Bevande",
+      "dessert": "Dessert",
+      "week": "Pizze della settimana",
+      "shopping_cart": "Carrello"
+    }
+  }
+}

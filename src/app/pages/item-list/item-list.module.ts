@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ItemListPageRoutingModule } from './item-list-routing.module';
 
 import { ItemListPage } from './item-list.page';
+import { SharedModulesModule } from 'src/app/modules/shared-modules.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ItemListPageRoutingModule
+    ItemListPageRoutingModule,
+    SharedModulesModule,
   ],
-  declarations: [ItemListPage]
+  declarations: [ItemListPage],
 })
 export class ItemListPageModule {}

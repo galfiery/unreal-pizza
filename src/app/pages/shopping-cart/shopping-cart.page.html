@@ -1,11 +1,8 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="container" *ngIf="cartItems$ | async as itemList">
-    <h3 class="list-title">Shopping Cart</h3>
+    <h3 class="list-title">{{ 'page.title.shopping_cart' | translate }}</h3>
 
-    <ion-item
-      detail="true"
-      *ngFor="let item of itemList"
-    >
+    <ion-item detail="true" *ngFor="let item of itemList">
       <ion-thumbnail slot="start">
         <img
           alt="Silhouette of mountains"
@@ -17,7 +14,9 @@
         <p>{{ item.currency }} {{item.price}}</p>
       </ion-label>
       <ion-buttons slot="end">
-        <ion-button color="danger" (click)="removeItem(item)"> Remove </ion-button>
+        <ion-button color="danger" (click)="removeItem(item)">
+          Remove
+        </ion-button>
       </ion-buttons>
     </ion-item>
   </div>

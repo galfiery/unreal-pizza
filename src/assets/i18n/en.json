@@ -1,0 +1,11 @@
+{
+  "page": {
+    "title": {
+      "classic_pizza": "Classic pizzas",
+      "special_pizza": "Special pizzas",
+      "drink": "Drinks",
+      "dessert": "Dessert",
+      "week": "Pizzas of the week"
+    }
+  }
+}
