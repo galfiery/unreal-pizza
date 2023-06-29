@@ -63,7 +63,7 @@
       </ion-grid>
     </div>
 
-    <div class="grid-container" *ngIf="(searching$ | async) === true">
+    <div *ngIf="(searching$ | async) === true">
       <cdk-virtual-scroll-viewport
         itemSize="56"
         minBufferPx="900"

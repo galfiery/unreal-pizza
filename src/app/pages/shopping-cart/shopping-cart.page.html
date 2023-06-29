@@ -11,7 +11,7 @@
       </ion-thumbnail>
       <ion-label class="ion-text-wrap" (click)="openInfo(item)">
         {{capitalizeFirstLetter(item.name)}}
-        <p>{{ item.currency }} {{item.price}}</p>
+        <p>{{item.price}} {{ item.currency | uppercase }}</p>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button color="danger" (click)="removeItem(item)">

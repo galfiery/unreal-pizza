@@ -54,10 +54,7 @@ ion-col {
 
 .container {
   padding-top: 100px;
-}
-
-.grid-container {
-  height: 600px;
+  margin-bottom: 100px;
 }
 
 .search-container {
@@ -91,10 +88,5 @@ ion-modal {
 .image-item {
   width: 150px;
   height: auto;
-  margin: 0 auto;
-}
-
-.list-item {
-  width: 300px;
   margin: 0 auto;
 }
