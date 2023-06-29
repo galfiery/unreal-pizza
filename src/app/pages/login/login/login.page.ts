@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { filter, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -27,21 +28,20 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  async submit() {
+  submit() {
     if (this.loginForm.invalid) {
       return;
     }
 
     try {
       const body = this.loginForm.value;
-      const response = await this.authService.login(
-        body.username,
-        body.password
-      );
-      if (response) {
-        this.router.navigateByUrl('/tabs/home');
-      }
-      console.log('failed');
+      this.authService
+        .login(body.username, body.password)
+        .pipe(
+          filter((response: boolean) => !!response),
+          tap(() => this.router.navigate(['/tabs/home']))
+        )
+        .subscribe();
     } catch (err) {
       console.log(err);
     }

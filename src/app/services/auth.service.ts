@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CacheService } from './cache.service';
+import { Observable, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,22 +12,11 @@ export class AuthService {
     private cacheService: CacheService
   ) {}
 
-  async login(username: string, password: string): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.httpClient.post(`/auth/login`, { username, password }).subscribe(
-          async (res: any) => {
-            await this.setAuthInfo(res);
-            resolve(true);
-          },
-          (err) => {
-            reject(false);
-          }
-        );
-      } catch (err) {
-        reject(err);
-      }
-    });
+  login(username: string, password: string): Observable<boolean> {
+    return this.httpClient.post(`/auth/login`, { username, password }).pipe(
+      tap((v: unknown) => this.setAuthInfo(v)),
+      map((v: unknown) => !!v)
+    );
   }
 
   private async setAuthInfo(authInfo: any) {

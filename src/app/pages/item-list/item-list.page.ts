@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { Section } from 'src/app/common/section-enum';
 import { ItemInfoComponent } from 'src/app/components/item-info/item-info.component';
 import { Item } from 'src/app/models/item.model';
@@ -13,60 +14,36 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./item-list.page.scss'],
 })
 export class ItemListPage implements OnInit {
+  itemService: ItemService = inject(ItemService);
+  route: ActivatedRoute = inject(ActivatedRoute);
+  baseService: BaseService = inject(BaseService);
+  modalCtrl: ModalController = inject(ModalController);
 
-  itemList: Item [] = [];
+  paramMap$: Observable<ParamMap> = this.route.paramMap;
+  items$: Observable<Item[]> = new Observable<Item[]>();
+
   title: string = '';
 
-  constructor(
-    private itemService: ItemService,
-    private route: ActivatedRoute,
-    private baseService: BaseService,
-    private modalController: ModalController,
-  ) { }
+  constructor() {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(async (params) => {
-      const paramValue = params.get('section');
-      switch (paramValue) {
-        case Section.CLASSIC:
-          this.itemList = await this.getClassicList();
-          this.title = 'Classic Pizzas';
-          break;
-        case Section.SPECIAL:
-          this.itemList = await this.getSpecialList();
-          this.title = 'Special Pizzas';
-          break;
-        case Section.DRINK:
-          this.itemList = await this.getDrinkList();
-          this.title = 'Drinks';
-          break;
-        case Section.DESSERT:
-          this.itemList = await this.getDessertList();
-          this.title = 'Dessert';
-          break;
-        case Section.WEEK:
-          this.itemList = await this.getWeekList();
-          this.title = 'Pizzas of the week';
-          break;
-        default:
-          this.itemList = await this.getClassicList();
-          this.title = 'Classic Pizzas';
-          break;
-      }
+    this.paramMap$.subscribe((route: ParamMap) => {
+      const itemType = route.get('section') as Section;
+      this.items$ = this.itemService.findByType(itemType);
     });
   }
 
   async openInfo(item: any) {
-    const modal = await this.modalController.create({
+    const modal = await this.modalCtrl.create({
       component: ItemInfoComponent,
-      initialBreakpoint: 0.40,
+      initialBreakpoint: 0.4,
       breakpoints: [0, 0.25, 0.5, 0.75],
       cssClass: 'half-page-modal',
       showBackdrop: true,
       backdropDismiss: true,
       componentProps: {
-        item
-      }
+        item,
+      },
     });
 
     await modal.present();
@@ -75,30 +52,4 @@ export class ItemListPage implements OnInit {
   capitalizeFirstLetter(str: string): string {
     return this.baseService.capitalizeFirstLetter(str);
   }
-
-  async getClassicList(): Promise<Item []> {
-    const items: Item [] = await this.itemService.findAllClassicPizza();
-    return items;
-  }
-
-  async getSpecialList(): Promise<Item []> {
-    const items: Item [] = await this.itemService.findAllSpecialPizza();
-    return items;
-  }
-
-  async getDessertList(): Promise<Item []> {
-    const items: Item [] = await this.itemService.findAllDessert();
-    return items;
-  }
-
-  async getDrinkList(): Promise<Item []> {
-    const items: Item [] = await this.itemService.findAllDrink();
-    return items;
-  }
-
-  async getWeekList(): Promise<Item []> {
-    const items: Item [] = await this.itemService.findAllPizzaWeek();
-    return items;
-  }
-
 }

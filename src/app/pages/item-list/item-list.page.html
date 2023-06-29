@@ -1,14 +1,24 @@
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content
+  [fullscreen]="true"
+  class="ion-padding"
+  *ngIf="items$ | async as itemList"
+>
   <div class="container">
-    <h3 class="list-title"> {{title}} </h3>
+    <h3 class="list-title">{{title}}</h3>
 
     <ion-list>
-      <ion-item detail="true" *ngFor="let item of itemList; let idx = index;" (click)="openInfo(item)">
+      <ion-item
+        detail="true"
+        *ngFor="let item of itemList"
+        (click)="openInfo(item)"
+      >
         <ion-label>
           <h2 class="item-title">{{capitalizeFirstLetter(item.name)}}</h2>
           <p>{{capitalizeFirstLetter(item.description)}}</p>
-          <p> {{item.price}} {{item.currency}} </p>
-          <ion-chip *ngIf="item.promotion" color="danger"> {{capitalizeFirstLetter(item.promotion)}} </ion-chip>
+          <p>{{item.price}} {{item.currency}}</p>
+          <ion-chip *ngIf="item.promotion" color="danger">
+            {{capitalizeFirstLetter(item.promotion)}}
+          </ion-chip>
         </ion-label>
       </ion-item>
     </ion-list>

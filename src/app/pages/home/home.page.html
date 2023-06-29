@@ -1,39 +1,50 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-
   <div class="container">
-
     <div class="search-container">
       <ion-item>
-        <ion-input placeholder="Pizza, dessert, drink ecc" (ionInput)="search($event)"></ion-input>
+        <ion-input
+          placeholder="Pizza, dessert, drink ecc"
+          (ionInput)="search($event)"
+        ></ion-input>
         <ion-icon name="search-outline"></ion-icon>
       </ion-item>
     </div>
 
-    <div class="grid-container" *ngIf="!searching">
+    <div class="grid-container" *ngIf="(searching$ | async) === false">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <div class="item-grid normal-pizza-item" routerLink="/tabs/item-list/classic">
+            <div
+              class="item-grid normal-pizza-item"
+              routerLink="/tabs/item-list/classic_pizza"
+            >
               <label class="item-label-grid">Classic</label>
             </div>
           </ion-col>
           <ion-col>
-            <div class="item-grid special-pizza-item" routerLink="/tabs/item-list/special">
-              <div class="item-badge">
-                Promotions!
-              </div>
+            <div
+              class="item-grid special-pizza-item"
+              routerLink="/tabs/item-list/special_pizza"
+            >
+              <div class="item-badge">Promotions!</div>
               <label class="item-label-grid">Special</label>
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <div class="item-grid dessert-item" routerLink="/tabs/item-list/dessert">
+            <div
+              class="item-grid dessert-item"
+              routerLink="/tabs/item-list/dessert"
+            >
               <label class="item-label-grid">Dessert</label>
             </div>
           </ion-col>
           <ion-col>
-            <div class="item-grid drink-item" routerLink="/tabs/item-list/drink">
+            <div
+              class="item-grid drink-item"
+              routerLink="/tabs/item-list/drink"
+            >
               <label class="item-label-grid">Drink</label>
             </div>
           </ion-col>
@@ -41,7 +52,10 @@
 
         <ion-row>
           <ion-col>
-            <div class="item-grid pizza-week-item" routerLink="/tabs/item-list/week">
+            <div
+              class="item-grid pizza-week-item"
+              routerLink="/tabs/item-list/week"
+            >
               <label class="item-label-grid">Pizzas of the week</label>
             </div>
           </ion-col>
@@ -49,19 +63,23 @@
       </ion-grid>
     </div>
 
-    <div class="grid-container" *ngIf="searching">
-      <ion-list>
-        <ion-item detail="true" *ngFor="let item of itemList; let idx = index;"  (click)="openInfo(item)">
+    <div class="grid-container" *ngIf="(searching$ | async) === true">
+      <ion-list *ngIf="filteredItems$ | async as filteredItems">
+        <ion-item
+          detail="true"
+          *ngFor="let item of filteredItems; let idx = index;"
+          (click)="openInfo(item)"
+        >
           <ion-label>
             <h2 class="item-title">{{capitalizeFirstLetter(item.name)}}</h2>
             <p>{{capitalizeFirstLetter(item.description)}}</p>
-            <p> {{item.price}} {{item.currency}} </p>
-            <ion-chip *ngIf="item.promotion" color="danger"> {{capitalizeFirstLetter(item.promotion)}} </ion-chip>
+            <p>{{item.price}} {{item.currency}}</p>
+            <ion-chip *ngIf="item.promotion" color="danger">
+              {{capitalizeFirstLetter(item.promotion)}}
+            </ion-chip>
           </ion-label>
         </ion-item>
       </ion-list>
     </div>
-
   </div>
-
 </ion-content>
