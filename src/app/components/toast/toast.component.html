@@ -1,0 +1,8 @@
+<ng-container *ngIf="toast$ | async as toast">
+  <div
+    *ngIf="toast.opened"
+    class="toast toast-{{ toast.type }}"
+  >
+    <p class="message-content">{{ toast.message | translate }}</p>
+  </div>
+</ng-container>

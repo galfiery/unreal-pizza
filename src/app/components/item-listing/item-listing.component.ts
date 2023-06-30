@@ -4,8 +4,9 @@ import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
 import { ItemInfoComponent } from '../item-info/item-info.component';
 import { ModalController } from '@ionic/angular';
-import { ItemService } from 'src/app/services/item.service';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastService } from 'src/app/services/commons/toast.service';
+import { ToastType } from 'src/app/models/common/toast.model';
 
 @Component({
   selector: 'app-item-listing',
@@ -15,8 +16,8 @@ import { CartService } from 'src/app/services/cart.service';
 export class ItemListingComponent implements OnInit {
   baseService: BaseService = inject(BaseService);
   modalCtrl: ModalController = inject(ModalController);
-  itemService: ItemService = inject(ItemService);
   cartService: CartService = inject(CartService);
+  toastService: ToastService = inject(ToastService);
 
   @Input()
   items$: Observable<Item[]> = new Observable<Item[]>();
@@ -49,10 +50,28 @@ export class ItemListingComponent implements OnInit {
   }
 
   removeItem(item: Item) {
-    this.cartService.removeItem(item);
+    try {
+      this.cartService.removeItem(item);
+      this.showSuccessMessage('toast.message.removed_item_cart_success');
+    } catch (err: any) {
+      this.showFailedMessage('toast.message.removed_item_cart_error');
+    }
   }
 
   addItem(item: Item) {
-    this.cartService.addItem(item);
+    try {
+      this.cartService.addItem(item);
+      this.showSuccessMessage('toast.message.added_item_cart_success');
+    } catch (err: any) {
+      this.showFailedMessage('toast.message.add_item_cart_error');
+    }
+  }
+
+  showSuccessMessage(message: string) {
+    this.toastService.showToast(message, ToastType.SUCCESS);
+  }
+
+  showFailedMessage(message: string) {
+    this.toastService.showToast(message, ToastType.DANGER);
   }
 }

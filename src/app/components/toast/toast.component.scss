@@ -1,0 +1,60 @@
+.toast {
+  display: flex;
+  position: absolute;
+  right: 5px;
+  box-sizing: border-box;
+  min-height: 55px;
+  width: auto;
+  height: auto;
+  padding: 0px 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  animation: move 1s both;
+  bottom: 100px;
+}
+
+.toast-success {
+  color: var(--ion-color-success-contrast);
+  background-color: var(--ion-color-success);
+  border-color: #c3e6cb;
+}
+
+.toast-danger {
+  color: var(--ion-color-success-contrast);
+  background-color: var(--ion-color-danger);
+  border-color: #f5c6cb;
+}
+
+.message-content {
+  position: relative;
+}
+
+.toast-warning {
+  color: var(--ion-color-success-contrast);
+  background-color: var(--ion-color-warning);
+  border-color: #ffeeba;
+}
+
+.close {
+  position: absolute;
+  color: var(--ion-color-success-contrast);
+  margin-bottom: 5px;
+  top: 7px;
+  right: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.toast-heading {
+  margin-top: 10px;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

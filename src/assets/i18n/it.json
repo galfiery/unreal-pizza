@@ -8,5 +8,13 @@
       "week": "Pizze della settimana",
       "shopping_cart": "Carrello"
     }
+  },
+  "toast": {
+    "message": {
+      "added_item_cart_success": "L'elemento è stato aggiunto al carrello",
+      "added_item_cart_error": "Si è verificato un errore. L'elemento non è stato aggiunto al carrello",
+      "removed_item_cart_success": "L'elemento è stato rimosso dal carrello",
+      "removed_item_cart_error": "Si è verificato un errore. L'elemento non è stato rimosso dal carrello"
+    }
   }
 }
