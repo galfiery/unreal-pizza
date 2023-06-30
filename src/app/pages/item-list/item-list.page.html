@@ -4,6 +4,13 @@
       {{('page.title.' + route.get('section')) | translate}}
     </h3>
 
-    <app-item-listing [items$]="items$"></app-item-listing>
+    <ng-container *ngIf="items$ | async as items">
+      <app-item-listing *ngIf="items.length" [items$]="items$"></app-item-listing>
+      <div class="message-container" *ngIf="!items.length">
+        <ion-label>
+          {{ 'page.message.section_items_missing' | translate }}
+        </ion-label>
+      </div>
+    </ng-container>
   </div>
 </ion-content>

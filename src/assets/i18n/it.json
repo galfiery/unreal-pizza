@@ -7,6 +7,11 @@
       "dessert": "Dessert",
       "week": "Pizze della settimana",
       "shopping_cart": "Carrello"
+    },
+    "message": {
+      "cart_items_missing": "Non ci sono ancora elementi nel carrello",
+      "section_items_missing": "Non ci sono ancora elementi disponibili",
+      "no_items_found": "Nessun elemento trovato"
     }
   },
   "toast": {

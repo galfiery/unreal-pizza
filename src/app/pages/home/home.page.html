@@ -64,7 +64,14 @@
     </div>
 
     <ng-container *ngIf="(searching$ | async) === true">
-      <app-item-listing [items$]="filteredItems$"></app-item-listing>
+      <ng-container *ngIf="filteredItems$ | async as filteredItems">
+        <app-item-listing *ngIf="filteredItems.length" [items$]="filteredItems$"></app-item-listing>
+        <div class="message-container" *ngIf="!filteredItems.length">
+          <ion-label>
+            {{ 'page.message.no_items_found' | translate }}
+          </ion-label>
+        </div>
+      </ng-container>
     </ng-container>
   </div>
 </ion-content>
