@@ -1,29 +1,40 @@
-import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
-import { Observable, catchError, from, of, switchMap, throwError } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpResponse,
+} from '@angular/common/http';
+import { Observable, catchError, from, of, switchMap } from 'rxjs';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(
-    private userService: UserService,
-  ) {}
+  userService: UserService = inject(UserService);
+  router: Router = inject(Router);
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  constructor() {}
+
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     return from(this.userService.getAccessToken()).pipe(
-      switchMap(token => {
+      switchMap((token) => {
         const modifiedRequest = request.clone({
           setHeaders: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
         return next.handle(modifiedRequest);
       }),
-      catchError(error => {
+      catchError((error) => {
         console.error('Error retrieving token:', error);
+        this.router.navigate(['/login']);
         return of(new HttpResponse({ status: 401 }));
       })
     );
   }
-
 }

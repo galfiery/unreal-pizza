@@ -8,8 +8,9 @@ import { Observable, map } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
   userService = inject(UserService);
+  router: Router = inject(Router);
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   canActivate(): Observable<boolean> {
     return this.isAuthenticated().pipe(
