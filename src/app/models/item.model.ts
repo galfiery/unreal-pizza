@@ -5,8 +5,8 @@ export class Item {
   categoryType: string;
   price: number;
   currency: string;
-  imageSrc ?: string;
-  promotion ?: string;
+  imageSrc?: string;
+  promotion?: string;
 
   constructor(data: any) {
     this.id = data.id;

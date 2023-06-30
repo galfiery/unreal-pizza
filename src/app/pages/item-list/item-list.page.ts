@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Section } from 'src/app/common/section-enum';
-import { ItemInfoComponent } from 'src/app/components/item-info/item-info.component';
 import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
 import { ItemService } from 'src/app/services/item.service';
@@ -21,8 +20,6 @@ export class ItemListPage implements OnInit {
 
   paramMap$: Observable<ParamMap> = this.route.paramMap;
   items$: Observable<Item[]> = new Observable<Item[]>();
-
-  title: string = '';
 
   constructor() {}
 

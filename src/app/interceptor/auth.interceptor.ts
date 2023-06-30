@@ -30,8 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
         });
         return next.handle(modifiedRequest);
       }),
-      catchError((error) => {
-        console.error('Error retrieving token:', error);
+      catchError(() => {
         this.router.navigate(['/login']);
         return of(new HttpResponse({ status: 401 }));
       })

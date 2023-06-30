@@ -1,6 +1,7 @@
 {
   "page": {
     "title": {
+      "application_title": "Unreal Pizza",
       "classic_pizza": "Pizze classiche",
       "special_pizza": "Pizze speciali",
       "drink": "Bevande",
@@ -11,7 +12,20 @@
     "message": {
       "cart_items_missing": "Non ci sono ancora elementi nel carrello",
       "section_items_missing": "Non ci sono ancora elementi disponibili",
-      "no_items_found": "Nessun elemento trovato"
+      "no_items_found": "Nessun elemento trovato",
+      "search_placeholder": "Pizza, dessert, drink, ecc.."
+    }
+  },
+  "container": {
+    "title": {
+      "classic_pizza": "Classiche",
+      "special_pizza": "Speciali",
+      "drink": "Bevande",
+      "dessert": "Dessert",
+      "week": "Pizze della settimana"
+    },
+    "message": {
+      "promotions": "Promozioni!"
     }
   },
   "toast": {
@@ -20,6 +34,13 @@
       "added_item_cart_error": "Si è verificato un errore. L'elemento non è stato aggiunto al carrello",
       "removed_item_cart_success": "L'elemento è stato rimosso dal carrello",
       "removed_item_cart_error": "Si è verificato un errore. L'elemento non è stato rimosso dal carrello"
+    }
+  },
+  "login": {
+    "button": {
+      "login": "Login",
+      "password": "Password",
+      "username": "Username"
     }
   }
 }

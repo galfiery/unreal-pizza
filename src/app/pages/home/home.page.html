@@ -3,7 +3,7 @@
     <div class="search-container">
       <ion-item>
         <ion-input
-          placeholder="Pizza, dessert, drink ecc"
+          [placeholder]="'page.message.search_placeholder' | translate"
           (ionInput)="search($event)"
         ></ion-input>
         <ion-icon name="search-outline"></ion-icon>
@@ -18,7 +18,9 @@
               class="item-grid normal-pizza-item"
               routerLink="/tabs/item-list/classic_pizza"
             >
-              <label class="item-label-grid">Classic</label>
+              <label class="item-label-grid"
+                >{{ 'container.title.classic_pizza' | translate }}</label
+              >
             </div>
           </ion-col>
           <ion-col>
@@ -26,8 +28,12 @@
               class="item-grid special-pizza-item"
               routerLink="/tabs/item-list/special_pizza"
             >
-              <div class="item-badge">Promotions!</div>
-              <label class="item-label-grid">Special</label>
+              <div class="item-badge">
+                {{ 'container.message.promotions' | translate }}
+              </div>
+              <label class="item-label-grid"
+                >{{ 'container.title.special_pizza' | translate }}</label
+              >
             </div>
           </ion-col>
         </ion-row>
@@ -37,7 +43,9 @@
               class="item-grid dessert-item"
               routerLink="/tabs/item-list/dessert"
             >
-              <label class="item-label-grid">Dessert</label>
+              <label class="item-label-grid"
+                >{{ 'container.title.dessert' | translate }}</label
+              >
             </div>
           </ion-col>
           <ion-col>
@@ -45,7 +53,9 @@
               class="item-grid drink-item"
               routerLink="/tabs/item-list/drink"
             >
-              <label class="item-label-grid">Drink</label>
+              <label class="item-label-grid"
+                >{{ 'container.title.drink' | translate }}</label
+              >
             </div>
           </ion-col>
         </ion-row>
@@ -56,7 +66,9 @@
               class="item-grid pizza-week-item"
               routerLink="/tabs/item-list/week"
             >
-              <label class="item-label-grid">Pizzas of the week</label>
+              <label class="item-label-grid"
+                >{{ 'container.title.week' | translate }}</label
+              >
             </div>
           </ion-col>
         </ion-row>
@@ -65,7 +77,10 @@
 
     <ng-container *ngIf="(searching$ | async) === true">
       <ng-container *ngIf="filteredItems$ | async as filteredItems">
-        <app-item-listing *ngIf="filteredItems.length" [items$]="filteredItems$"></app-item-listing>
+        <app-item-listing
+          *ngIf="filteredItems.length"
+          [items$]="filteredItems$"
+        ></app-item-listing>
         <div class="message-container" *ngIf="!filteredItems.length">
           <ion-label>
             {{ 'page.message.no_items_found' | translate }}

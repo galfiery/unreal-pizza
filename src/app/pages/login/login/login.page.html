@@ -3,19 +3,21 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
       <ion-item>
         <ion-input
-          placeholder="Username"
+          [placeholder]="'login.button.username' | translate"
           formControlName="username"
           type="text"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input
-          placeholder="Password"
+          [placeholder]="'login.button.password' | translate"
           formControlName="password"
           type="password"
         ></ion-input>
       </ion-item>
-      <ion-button expand="block" color="danger" type="submit">Login</ion-button>
+      <ion-button expand="block" color="danger" type="submit"
+        >{{ 'login.button.login' | translate }}</ion-button
+      >
     </form>
   </div>
 </ion-content>

@@ -17,6 +17,6 @@ import { SharedComponentsModule } from 'src/app/modules/shared-components.module
     SharedModulesModule,
     SharedComponentsModule,
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
 export class HomePageModule {}
