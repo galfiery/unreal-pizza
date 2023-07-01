@@ -16,7 +16,9 @@
           <p>
             {{ capitalizeFirstLetter(item.description) }}
           </p>
-          <p>{{ item.price }} {{ item.currency | uppercase }}</p>
+          <p>
+            {{ item.price | currency : (item.currency | uppercase) }}
+          </p>
           <ion-chip *ngIf="item.promotion" color="danger">
             {{ capitalizeFirstLetter(item.promotion) }}
           </ion-chip>

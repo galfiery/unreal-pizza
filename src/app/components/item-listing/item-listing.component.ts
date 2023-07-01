@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
-import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastService } from 'src/app/services/commons/toast.service';
 import { ToastType } from 'src/app/models/common/toast.model';
