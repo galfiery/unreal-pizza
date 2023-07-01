@@ -11,7 +11,7 @@
         <ion-thumbnail slot="start" *ngIf="showMoreInfo">
           <img [src]="'../../../assets/images/pizza_1.avif'" />
         </ion-thumbnail>
-        <ion-label>
+        <ion-label (click)="openInfo(item)">
           <h2 class="item-title">{{ capitalizeFirstLetter(item.name) }}</h2>
           <p>
             {{ capitalizeFirstLetter(item.description) }}
@@ -25,12 +25,6 @@
         </ion-label>
       </ion-item>
       <ion-item-options>
-        <ion-item-option
-          color="primary"
-          class="item-sliding-option"
-          (click)="openInfo(item)"
-          ><ion-icon name="help-outline"></ion-icon
-        ></ion-item-option>
         <ion-item-option
           *ngIf="!showMoreInfo"
           color="success"
