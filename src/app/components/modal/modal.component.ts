@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {}
 
-  close(): void {
+  onModalDismiss(): void {
     this.modalService.close();
   }
 }
