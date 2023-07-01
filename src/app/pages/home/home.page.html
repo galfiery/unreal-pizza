@@ -8,6 +8,12 @@
         ></ion-input>
         <ion-icon name="search-outline"></ion-icon>
       </ion-item>
+      <div class="search-chip-container" *ngIf="(searching$ | async) === true">
+        <ion-chip color="danger" *ngIf="searchValue$.asObservable() | async as searching">
+          <ion-label>{{searching}}</ion-label>
+          <ion-icon name="close" (click)="cleanSearch()"></ion-icon>
+        </ion-chip>
+      </div>
     </div>
 
     <div class="grid-container" *ngIf="(searching$ | async) === false">

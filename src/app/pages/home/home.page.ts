@@ -24,11 +24,13 @@ export class HomePage {
 
   searching$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   filteredItems$: Observable<Item[]> = new Observable<Item[]>();
+  searchValue$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor() {}
 
-  search(event: any) {
+  search(event: any): void {
     if (event?.detail?.value) {
+      this.searchValue$.next(event?.detail?.value);
       this.filteredItems$ = combineLatest(
         this.itemService.findByType(Section.CLASSIC),
         this.itemService.findByType(Section.SPECIAL)
@@ -43,5 +45,10 @@ export class HomePage {
       );
       this.searching$.next(true);
     } else this.searching$.next(false);
+  }
+
+  cleanSearch(): void {
+    this.searchValue$.next('');
+    this.searching$.next(false);
   }
 }
