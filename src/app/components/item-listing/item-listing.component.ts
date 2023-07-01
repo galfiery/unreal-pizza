@@ -22,6 +22,7 @@ export class ItemListingComponent implements OnInit {
 
   @Input()
   items$: Observable<Item[]> = new Observable<Item[]>();
+  cartItems$: Observable<Item []> = this.cartService.getSavedItems();
   itemSelected$: Observable<Item> = this.itemStateService.getSelected();
 
   @Input()
