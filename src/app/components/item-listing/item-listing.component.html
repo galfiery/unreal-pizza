@@ -9,9 +9,7 @@
     <ion-item-sliding *cdkVirtualFor="let item of itemList">
       <ion-item detail="true" class="item-content">
         <ion-thumbnail slot="start" *ngIf="showMoreInfo">
-          <img
-            [src]="'../../../assets/images/pizza_1.avif'"
-          />
+          <img [src]="'../../../assets/images/pizza_1.avif'" />
         </ion-thumbnail>
         <ion-label>
           <h2 class="item-title">{{ capitalizeFirstLetter(item.name) }}</h2>

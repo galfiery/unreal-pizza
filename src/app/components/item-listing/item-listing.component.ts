@@ -2,11 +2,12 @@ import { Observable } from 'rxjs';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { BaseService } from 'src/app/services/base.service';
-import { ItemInfoComponent } from '../item-info/item-info.component';
 import { ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastService } from 'src/app/services/commons/toast.service';
 import { ToastType } from 'src/app/models/common/toast.model';
+import { ItemStateService } from 'src/app/services/item-state.service';
+import { ModalService } from 'src/app/services/commons/modal.service';
 
 @Component({
   selector: 'app-item-listing',
@@ -15,12 +16,14 @@ import { ToastType } from 'src/app/models/common/toast.model';
 })
 export class ItemListingComponent implements OnInit {
   baseService: BaseService = inject(BaseService);
-  modalCtrl: ModalController = inject(ModalController);
   cartService: CartService = inject(CartService);
   toastService: ToastService = inject(ToastService);
+  itemStateService: ItemStateService = inject(ItemStateService);
+  modalService: ModalService = inject(ModalService);
 
   @Input()
   items$: Observable<Item[]> = new Observable<Item[]>();
+  itemSelected$: Observable<Item> = this.itemStateService.getSelected();
 
   @Input()
   showMoreInfo: boolean = false;
@@ -29,27 +32,20 @@ export class ItemListingComponent implements OnInit {
 
   ngOnInit() {}
 
-  async openInfo(item: Item) {
-    const modal = await this.modalCtrl.create({
-      component: ItemInfoComponent,
-      initialBreakpoint: 0.35,
-      breakpoints: [0, 0.25, 0.5, 0.75],
-      cssClass: 'half-page-modal',
-      showBackdrop: true,
-      backdropDismiss: true,
-      componentProps: {
-        item,
-      },
-    });
+  openInfo(item: Item): void {
+    this.itemStateService.setSelected(item);
+    this.modalService.open();
+  }
 
-    await modal.present();
+  closeInfo(): void {
+    this.modalService.close();
   }
 
   capitalizeFirstLetter(str: string): string {
     return this.baseService.capitalizeFirstLetter(str);
   }
 
-  removeItem(item: Item) {
+  removeItem(item: Item): void {
     try {
       this.cartService.removeItem(item);
       this.showSuccessMessage('toast.message.removed_item_cart_success');
@@ -58,7 +54,7 @@ export class ItemListingComponent implements OnInit {
     }
   }
 
-  addItem(item: Item) {
+  addItem(item: Item): void {
     try {
       this.cartService.addItem(item);
       this.showSuccessMessage('toast.message.added_item_cart_success');
@@ -67,11 +63,11 @@ export class ItemListingComponent implements OnInit {
     }
   }
 
-  showSuccessMessage(message: string) {
+  showSuccessMessage(message: string): void {
     this.toastService.showToast(message, ToastType.SUCCESS);
   }
 
-  showFailedMessage(message: string) {
+  showFailedMessage(message: string): void {
     this.toastService.showToast(message, ToastType.DANGER);
   }
 }
