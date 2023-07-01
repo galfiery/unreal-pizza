@@ -19,8 +19,8 @@ Here are some screenshots of the Unreal Pizza app:
   <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_1.png" alt="Image 1" width="250">
   <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_2.png" alt="Image 2" width="250">
   <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_3.png" alt="Image 3" width="250">
-  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_4.png" alt="Image 3" width="250">
-  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_5.png" alt="Image 3" width="250">
+  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_6.png" alt="Image 3" width="250">
+  <img src="https://github.com/galfiery/unreal-pizza/raw/main/demo-images/image_7.png" alt="Image 3" width="250">
 </div>
 
 ## Installation
@@ -30,7 +30,8 @@ To run the Unreal Pizza mobile ordering app locally, follow these steps:
 1. Clone this repository to your local machine.
 2. Install the required dependencies by running the command `npm install`.
 3. Build the project by running `ionic build`.
-4. Start the development server with `ionic serve`.
+4. Start the development server with `ng serve --proxy-config proxy.config.json` for proxy configuration.
+5. Log in using `galfiery` as the username and `root` as the password.
 
 Note: Ensure you have Node.js, Angular, and Ionic CLI installed on your machine.
 
