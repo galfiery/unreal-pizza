@@ -24,7 +24,7 @@
           </ion-chip>
         </ion-label>
       </ion-item>
-      <ion-item-options *ngIf="cartItems$ | async as cartItems">
+      <ion-item-options>
         <ion-item-option
           *ngIf="!showMoreInfo"
           color="success"
@@ -33,7 +33,7 @@
           ><ion-icon name="add-outline"></ion-icon
         ></ion-item-option>
         <ion-item-option
-          *ngIf="showMoreInfo || cartItems.includes(item)"
+          *ngIf="showMoreInfo"
           color="danger"
           class="item-sliding-option"
           (click)="removeItem(item)"
