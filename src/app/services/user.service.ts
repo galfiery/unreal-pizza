@@ -27,14 +27,15 @@ export class UserService {
       this.cacheService.getEmail()
     ).pipe(
       distinctUntilChanged(),
-      map(([firstName, lastName, username, email]: [any, any, any, any]) => {
-        return new User({
-          firstName: firstName.value,
-          lastName: lastName.value,
-          username: username.value,
-          email: email.value,
-        });
-      })
+      map(
+        ([firstName, lastName, username, email]: [any, any, any, any]) =>
+          new User({
+            firstName: firstName.value,
+            lastName: lastName.value,
+            username: username.value,
+            email: email.value,
+          })
+      )
     );
   }
 

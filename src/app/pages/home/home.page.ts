@@ -37,10 +37,9 @@ export class HomePage {
       ).pipe(
         distinctUntilChanged(),
         map(([classicPizzaList, specialPizzaList]: [Item[], Item[]]) =>
-          classicPizzaList.concat(specialPizzaList)
-        ),
-        map((itemList: Item[]) =>
-          itemList.filter((it: Item) => it.name.includes(event.detail.value))
+          classicPizzaList
+            .concat(specialPizzaList)
+            .filter((it: Item) => it.name.includes(event.detail.value))
         )
       );
       this.searching$.next(true);
