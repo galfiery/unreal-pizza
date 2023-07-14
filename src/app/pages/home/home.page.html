@@ -2,10 +2,8 @@
   <div class="container">
     <div class="search-container">
       <ion-item>
-        <ion-input
-          [placeholder]="'page.message.search_placeholder' | translate"
-          (ionInput)="search($event)"
-        ></ion-input>
+        <ion-input [placeholder]="'page.message.search_placeholder' | translate" (ionInput)="search($event)">
+        </ion-input>
         <ion-icon name="search-outline"></ion-icon>
       </ion-item>
       <div class="search-chip-container" *ngIf="(searching$ | async) === true">
@@ -20,61 +18,36 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <div
-              class="item-grid normal-pizza-item"
-              routerLink="/tabs/item-list/classic_pizza"
-            >
-              <label class="item-label-grid"
-                >{{ 'container.title.classic_pizza' | translate }}</label
-              >
+            <div class="item-grid normal-pizza-item" routerLink="/tabs/item-list/classic_pizza">
+              <label class="item-label-grid">{{ 'container.title.classic_pizza' | translate }}</label>
             </div>
           </ion-col>
           <ion-col>
-            <div
-              class="item-grid special-pizza-item"
-              routerLink="/tabs/item-list/special_pizza"
-            >
+            <div class="item-grid special-pizza-item" routerLink="/tabs/item-list/special_pizza">
               <div class="item-badge">
                 {{ 'container.message.promotions' | translate }}
               </div>
-              <label class="item-label-grid"
-                >{{ 'container.title.special_pizza' | translate }}</label
-              >
+              <label class="item-label-grid">{{ 'container.title.special_pizza' | translate }}</label>
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <div
-              class="item-grid dessert-item"
-              routerLink="/tabs/item-list/dessert"
-            >
-              <label class="item-label-grid"
-                >{{ 'container.title.dessert' | translate }}</label
-              >
+            <div class="item-grid dessert-item" routerLink="/tabs/item-list/dessert">
+              <label class="item-label-grid">{{ 'container.title.dessert' | translate }}</label>
             </div>
           </ion-col>
           <ion-col>
-            <div
-              class="item-grid drink-item"
-              routerLink="/tabs/item-list/drink"
-            >
-              <label class="item-label-grid"
-                >{{ 'container.title.drink' | translate }}</label
-              >
+            <div class="item-grid drink-item" routerLink="/tabs/item-list/drink">
+              <label class="item-label-grid">{{ 'container.title.drink' | translate }}</label>
             </div>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col>
-            <div
-              class="item-grid pizza-week-item"
-              routerLink="/tabs/item-list/week"
-            >
-              <label class="item-label-grid"
-                >{{ 'container.title.week' | translate }}</label
-              >
+            <div class="item-grid pizza-week-item" routerLink="/tabs/item-list/week">
+              <label class="item-label-grid">{{ 'container.title.week' | translate }}</label>
             </div>
           </ion-col>
         </ion-row>
@@ -83,10 +56,7 @@
 
     <ng-container *ngIf="(searching$ | async) === true">
       <ng-container *ngIf="filteredItems$ | async as filteredItems">
-        <app-item-listing
-          *ngIf="filteredItems.length"
-          [items$]="filteredItems$"
-        ></app-item-listing>
+        <app-item-listing *ngIf="filteredItems.length" [items$]="filteredItems$"></app-item-listing>
         <div class="message-container" *ngIf="!filteredItems.length">
           <ion-label>
             {{ 'page.message.no_items_found' | translate }}

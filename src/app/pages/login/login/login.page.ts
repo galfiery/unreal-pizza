@@ -1,13 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter, tap } from 'rxjs';
+import { Observable, filter } from 'rxjs';
+import { LoginDTO } from 'src/app/models/dto/login.dto';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,15 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  authService = inject(AuthService);
+  authService: AuthService = inject(AuthService);
+  userService: UserService = inject(UserService);
+  formBuilder: FormBuilder = inject(FormBuilder);
+  router: Router = inject(Router);
 
   loginForm: FormGroup;
+  accessToken$: Observable<string | null> = this.userService.getAccessToken();
 
-  constructor(public formBuilder: FormBuilder, private router: Router) {
+  constructor() {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -34,14 +39,12 @@ export class LoginPage implements OnInit {
     }
 
     try {
-      const body = this.loginForm.value;
+      const body: LoginDTO = new LoginDTO(this.loginForm.value);
       this.authService
-        .login(body.username, body.password)
-        .pipe(
-          filter((response: boolean) => !!response),
-          tap(() => this.router.navigate(['/tabs/home']))
+        .login(body).pipe(
+          filter((res: boolean) => !!res)
         )
-        .subscribe();
+        .subscribe(() => this.router.navigate(['/tabs/home']));
     } catch (err) {
       console.log(err);
     }

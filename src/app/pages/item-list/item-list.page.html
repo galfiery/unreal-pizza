@@ -5,10 +5,7 @@
     </h3>
 
     <ng-container *ngIf="items$ | async as items">
-      <app-item-listing
-        *ngIf="items.length"
-        [items$]="items$"
-      ></app-item-listing>
+      <app-item-listing *ngIf="items.length" [items$]="items$"></app-item-listing>
       <div class="message-container" *ngIf="!items.length">
         <ion-label>
           {{ 'page.message.section_items_missing' | translate }}

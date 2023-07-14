@@ -41,7 +41,6 @@ export class UserService {
 
   getAccessToken(): Observable<string | null> {
     return this.cacheService.getToken().pipe(
-      filter((tokenResult: unknown) => !!tokenResult),
       map((token: any) => token.value)
     );
   }
